@@ -11,9 +11,15 @@ class ViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view.
+		
+		title = "What's that Sound?"
+		navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
 	}
-
+	
+	
+	
 
 }
+
+
 
