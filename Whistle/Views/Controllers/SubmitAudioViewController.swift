@@ -7,16 +7,30 @@
 
 import UIKit
 
+
 class SubmitAudioViewController: UIViewController {
 	
 	var genre: String!
 	var comments = ""
 	
-    override func viewDidLoad() {
+	@IBOutlet var statusLabel: UILabel!
+	@IBOutlet var spinnerLoad: UIActivityIndicatorView!
+	override func viewDidLoad() {
         super.viewDidLoad()
-
-        print(genre)
+		title = "You're all set!"
+		navigationItem.hidesBackButton = true
+		statusLabel.text = "Submitting"
+		
+		doSubmission()
     }
+	
+	private func doSubmission() {
+
+	}
+	
+	@objc private func doneTapped() {
+		_ = navigationController?.popToRootViewController(animated: true)
+	}
     
 
     /*

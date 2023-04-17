@@ -15,6 +15,7 @@ class RecordViewController: UIViewController {
 	@IBOutlet var messageLabel: UILabel!
 	@IBOutlet var errorMessage: UILabel!
 	
+	@IBOutlet var nextBtn: UIBarButtonItem!
 	@IBOutlet var playBtn: UIButton!
 	@IBOutlet var deleteBtn: UIButton!
 	
@@ -57,15 +58,12 @@ class RecordViewController: UIViewController {
 		audioRecorder == nil ? startRecording() : finishRecording(success: true)
 	}
 	
-	// code btn action
-	@objc private func didTapPlayBtn(){
-		
-	}
-	
+
 	func startRecording(){
 		// update UI
 		view.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
 		messageLabel.text = stopRecMessage
+		nextBtn.isEnabled = false
 		playBtn.isHidden = true
 		deleteBtn.isHidden = true
 		
@@ -102,8 +100,9 @@ class RecordViewController: UIViewController {
 
 	
 		if success {
-			navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(didTapNext))
+			
 			UIView.animate(withDuration: 0.35) { [weak self] in
+				self?.nextBtn.isEnabled = true
 				self?.playBtn.isHidden = false
 				self?.deleteBtn.isHidden = false
 			}
@@ -116,10 +115,6 @@ class RecordViewController: UIViewController {
 		
 	}
 	
-	@objc func didTapNext() {
-		let vc = SelectGenreTableViewController()
-		navigationController?.pushViewController(vc, animated: true)
-	}
 	
 	@IBAction func didTapPlayBtn(_ sender: Any) {
 		let audioURL = RecordViewController.getAudioURL()
@@ -135,7 +130,7 @@ class RecordViewController: UIViewController {
 		print("delete")
 		playBtn.isHidden = true
 		deleteBtn.isHidden = true
-		navigationItem.rightBarButtonItem = nil
+		nextBtn.isEnabled = false
 	}
 	
 	private func loadMainUI(){

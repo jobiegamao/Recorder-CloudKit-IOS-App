@@ -16,6 +16,7 @@ class SelectGenreTableViewController: UITableViewController {
 	//When referencing the genres array we need to use SelectGenreViewController.genres because the array belongs to the class, not to our instance of the class.
 	static var genres = ["Unknown", "Blues", "Classical", "Electronic", "Jazz", "Metal", "Pop", "Reggae", "RnB", "Rock", "Soul"]
 	
+	@IBOutlet var nextBtn: UIBarButtonItem!
 	
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -128,18 +128,63 @@
                             <constraint firstItem="VQS-9r-aEl" firstAttribute="height" secondItem="1Vd-ZE-e8W" secondAttribute="height" id="ua3-vZ-yEM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="pOH-nf-Mdd"/>
+                    <navigationItem key="navigationItem" id="pOH-nf-Mdd">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Next" id="GMj-KU-oN4">
+                            <connections>
+                                <segue destination="oUn-xw-JmV" kind="show" id="PHx-09-MQr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="deleteBtn" destination="VQS-9r-aEl" id="EKh-U7-1IB"/>
                         <outlet property="errorMessage" destination="vOR-lz-rVw" id="GLw-HS-0MU"/>
                         <outlet property="mainView" destination="FO3-Jp-3WA" id="TWj-Ew-1rE"/>
                         <outlet property="messageLabel" destination="7q2-MX-Xrg" id="IFv-jb-xrs"/>
-                        <outlet property="playBtn" destination="1Vd-ZE-e8W" id="i5j-X7-wcs"/>
+                        <outlet property="nextBtn" destination="GMj-KU-oN4" id="4El-WH-L0K"/>
+                        <outlet property="playBtn" destination="1Vd-ZE-e8W" id="nG5-16-GTg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvj-g4-8us" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1843.4782608695652" y="8.0357142857142847"/>
+        </scene>
+        <!--Select Genre Table View Controller-->
+        <scene sceneID="B5A-XT-0gh">
+            <objects>
+                <tableViewController id="oUn-xw-JmV" customClass="SelectGenreTableViewController" customModule="Whistle" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="UZw-fQ-1xC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="fqv-1Y-q6U">
+                                <rect key="frame" x="0.0" y="50" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fqv-1Y-q6U" id="MNI-hi-jf1">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="oUn-xw-JmV" id="UT2-Ot-aLC"/>
+                            <outlet property="delegate" destination="oUn-xw-JmV" id="fJ3-2V-FeJ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="KiM-c5-w6Z">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="ErE-16-Efs">
+                            <connections>
+                                <segue destination="baS-R2-DAN" kind="show" id="3GL-HP-ggM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nextBtn" destination="ErE-16-Efs" id="1xD-7M-C3V"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pKc-rO-9PE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2823" y="22"/>
         </scene>
         <!--Add Comments View Controller-->
         <scene sceneID="eLP-TX-Oo7">
@@ -149,10 +194,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aE9-2c-2BF">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aE9-2c-2BF">
                                 <rect key="frame" x="20" y="123" width="374" height="243"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="243" id="4Lc-xL-1Ks"/>
+                                </constraints>
                                 <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -161,6 +207,11 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DWJ-mE-FNX"/>
                         <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aE9-2c-2BF" firstAttribute="top" secondItem="DWJ-mE-FNX" secondAttribute="top" constant="31" id="LSg-ku-PpW"/>
+                            <constraint firstItem="aE9-2c-2BF" firstAttribute="trailing" secondItem="qfn-FE-cwG" secondAttribute="trailingMargin" id="QFw-dQ-2Iq"/>
+                            <constraint firstItem="aE9-2c-2BF" firstAttribute="leading" secondItem="qfn-FE-cwG" secondAttribute="leadingMargin" id="SIa-0i-cec"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6f8-uf-xe8">
                         <barButtonItem key="rightBarButtonItem" title="Submit" id="AJW-J2-ClP">
@@ -184,14 +235,39 @@
                     <view key="view" contentMode="scaleToFill" id="EKN-wK-5ne">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="s4G-UC-KPl">
+                                <rect key="frame" x="20" y="192" width="374" height="70.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="status" textAlignment="center" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yj5-bV-eaf">
+                                        <rect key="frame" x="150" y="0.0" width="74" height="33.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Kr1-B9-GYn">
+                                        <rect key="frame" x="168.5" y="33.5" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="XAY-ll-S5b"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="s4G-UC-KPl" firstAttribute="trailing" secondItem="EKN-wK-5ne" secondAttribute="trailingMargin" id="MPu-m8-kyf"/>
+                            <constraint firstItem="s4G-UC-KPl" firstAttribute="leading" secondItem="EKN-wK-5ne" secondAttribute="leadingMargin" id="j73-Id-tAd"/>
+                            <constraint firstItem="s4G-UC-KPl" firstAttribute="top" secondItem="XAY-ll-S5b" secondAttribute="top" constant="100" id="jid-kp-mdu"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="AeA-lv-a6f"/>
+                    <connections>
+                        <outlet property="spinnerLoad" destination="Kr1-B9-GYn" id="gTX-5a-Z0c"/>
+                        <outlet property="statusLabel" destination="Yj5-bV-eaf" id="90x-HT-b44"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RMA-97-47I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4646" y="4"/>
+            <point key="canvasLocation" x="4643.4782608695659" y="3.3482142857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xs0-Fx-D3t">
@@ -209,25 +285,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ck5-rP-LEH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.64122137404578" y="3.5211267605633805"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="PXl-X0-IN3">
-            <objects>
-                <navigationController storyboardIdentifier="addCommentNav" automaticallyAdjustsScrollViewInsets="NO" id="wO9-I3-twl" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NgI-ZI-Rus">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="baS-R2-DAN" kind="relationship" relationship="rootViewController" id="oeU-xq-oIR"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cf3-7n-QBV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2830.434782608696" y="4.6875"/>
+            <point key="canvasLocation" x="303" y="-7"/>
         </scene>
     </scenes>
     <resources>
