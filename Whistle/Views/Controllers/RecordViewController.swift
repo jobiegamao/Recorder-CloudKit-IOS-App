@@ -15,13 +15,18 @@ class RecordViewController: UIViewController {
 	@IBOutlet var messageLabel: UILabel!
 	@IBOutlet var errorMessage: UILabel!
 	
+	@IBOutlet var playBtn: UIButton!
+	@IBOutlet var deleteBtn: UIButton!
+	
 	var recordingSession: AVAudioSession!
 	var audioRecorder: AVAudioRecorder!
+	var audioPlayer: AVAudioPlayer!
 	
 	private let startRecMessage = "Tap mic button to record"
 	private let stopRecMessage = "Tap mic to Stop"
 	
 	private var originalBackgroundColor: UIColor!
+	
 	
 	// MARK: - Main
 	override func viewDidLoad() {
@@ -39,26 +44,30 @@ class RecordViewController: UIViewController {
 			// add to plist.file Privacy - Microphone Usage Description
 			recordingSession.requestRecordPermission() { [weak self] allowed in
 				DispatchQueue.main.async {
-					if allowed {
-						self?.mainView.isHidden = false
-					} else {
-						self?.errorMessage.isHidden = false
-					}
+					allowed ? self?.loadMainUI() : self?.loadFailedUI()
 				}
 			}
 		} catch {
-			errorMessage.isHidden = false
+			loadFailedUI()
 		}
 	}
 
+	// storyboard btn action
 	@IBAction func didTapRecord(_ sender: Any) {
 		audioRecorder == nil ? startRecording() : finishRecording(success: true)
+	}
+	
+	// code btn action
+	@objc private func didTapPlayBtn(){
+		
 	}
 	
 	func startRecording(){
 		// update UI
 		view.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
 		messageLabel.text = stopRecMessage
+		playBtn.isHidden = true
+		deleteBtn.isHidden = true
 		
 		// create URL for the recorded audio to be saved
 		let audioURL = RecordViewController.getAudioURL()
@@ -93,20 +102,58 @@ class RecordViewController: UIViewController {
 
 	
 		if success {
-			navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextTapped))
+			navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(didTapNext))
+			UIView.animate(withDuration: 0.35) { [weak self] in
+				self?.playBtn.isHidden = false
+				self?.deleteBtn.isHidden = false
+			}
+			
+			
 		} else {
-			let ac = UIAlertController(title: "Record failed", message: "There was a problem recording; please try again.", preferredStyle: .alert)
-			ac.addAction(UIAlertAction(title: "OK", style: .default))
-			present(ac, animated: true)
+			showAlert(title: "Record failed", message: "There was a problem recording; please try again.")
+		}
+		
+		
+	}
+	
+	@objc func didTapNext() {
+		let vc = SelectGenreTableViewController()
+		navigationController?.pushViewController(vc, animated: true)
+	}
+	
+	@IBAction func didTapPlayBtn(_ sender: Any) {
+		let audioURL = RecordViewController.getAudioURL()
+		do {
+			audioPlayer = try AVAudioPlayer(contentsOf: audioURL)
+			audioPlayer.play()
+		} catch {
+			showAlert(title: "Playback failed", message: error.localizedDescription)
 		}
 	}
 	
-	@objc func nextTapped() {
-
+	@IBAction func didTapDeleteBtn(_ sender: Any) {
+		print("delete")
+		playBtn.isHidden = true
+		deleteBtn.isHidden = true
+		navigationItem.rightBarButtonItem = nil
 	}
 	
+	private func loadMainUI(){
+		mainView.isHidden = false
+		
+	}
 	
+	private func loadFailedUI(){
+		errorMessage.isHidden = false
+	}
 	
+	func showAlert(title: String, message: String){
+		let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: "OK", style: .default))
+		present(ac, animated: true)
+	}
+	
+
 	// Class keyword before func - call them on the class not on instances of the class. This is important, because it means we can find the whistle URL from anywhere in our app rather than typing it in everywhere.
 	
 	

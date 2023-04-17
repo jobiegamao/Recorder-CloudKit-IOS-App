@@ -14,6 +14,9 @@
 		6C5A157A29EAB1610002FD72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C5A157929EAB1610002FD72 /* Assets.xcassets */; };
 		6C5A157D29EAB1610002FD72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C5A157B29EAB1610002FD72 /* LaunchScreen.storyboard */; };
 		6C5A158529EAB4E50002FD72 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A158429EAB4E50002FD72 /* RecordViewController.swift */; };
+		6C5A158929EBFCD90002FD72 /* SelectGenreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A158829EBFCD90002FD72 /* SelectGenreTableViewController.swift */; };
+		6C5A158D29ED019A0002FD72 /* AddCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A158C29ED019A0002FD72 /* AddCommentsViewController.swift */; };
+		6C5A158F29ED07710002FD72 /* SubmitAudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A158E29ED07710002FD72 /* SubmitAudioViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		6C5A157C29EAB1610002FD72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6C5A157E29EAB1610002FD72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C5A158429EAB4E50002FD72 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		6C5A158829EBFCD90002FD72 /* SelectGenreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenreTableViewController.swift; sourceTree = "<group>"; };
+		6C5A158C29ED019A0002FD72 /* AddCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentsViewController.swift; sourceTree = "<group>"; };
+		6C5A158E29ED07710002FD72 /* SubmitAudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitAudioViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +66,33 @@
 			children = (
 				6C5A157029EAB15F0002FD72 /* AppDelegate.swift */,
 				6C5A157229EAB15F0002FD72 /* SceneDelegate.swift */,
-				6C5A157429EAB15F0002FD72 /* ViewController.swift */,
-				6C5A158429EAB4E50002FD72 /* RecordViewController.swift */,
+				6C5A158629EBFC840002FD72 /* Views */,
 				6C5A157629EAB15F0002FD72 /* Main.storyboard */,
 				6C5A157929EAB1610002FD72 /* Assets.xcassets */,
 				6C5A157B29EAB1610002FD72 /* LaunchScreen.storyboard */,
 				6C5A157E29EAB1610002FD72 /* Info.plist */,
 			);
 			path = Whistle;
+			sourceTree = "<group>";
+		};
+		6C5A158629EBFC840002FD72 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6C5A158729EBFC920002FD72 /* Controllers */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6C5A158729EBFC920002FD72 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6C5A157429EAB15F0002FD72 /* ViewController.swift */,
+				6C5A158429EAB4E50002FD72 /* RecordViewController.swift */,
+				6C5A158829EBFCD90002FD72 /* SelectGenreTableViewController.swift */,
+				6C5A158C29ED019A0002FD72 /* AddCommentsViewController.swift */,
+				6C5A158E29ED07710002FD72 /* SubmitAudioViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,7 +168,10 @@
 			files = (
 				6C5A157529EAB15F0002FD72 /* ViewController.swift in Sources */,
 				6C5A157129EAB15F0002FD72 /* AppDelegate.swift in Sources */,
+				6C5A158F29ED07710002FD72 /* SubmitAudioViewController.swift in Sources */,
 				6C5A157329EAB15F0002FD72 /* SceneDelegate.swift in Sources */,
+				6C5A158929EBFCD90002FD72 /* SelectGenreTableViewController.swift in Sources */,
+				6C5A158D29ED019A0002FD72 /* AddCommentsViewController.swift in Sources */,
 				6C5A158529EAB4E50002FD72 /* RecordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
